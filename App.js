@@ -1,20 +1,23 @@
+import 'react-native-gesture-handler';
+import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
+import Drawer from './Routes/Drawer';
+import HomeStack from './Routes/HomeStack';
+import Home from './screens/Home';
 
 export default function App() {
+  const [loaded] = useFonts({
+    oswaldSemibold: require('./assets/Fonts/Oswald-SemiBold.ttf'),
+  })
+  !loaded && console.log('Fonts not loaded');
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    loaded &&
+      // <Home />
+      // <HomeStack />
+      <Drawer />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
